@@ -15,9 +15,9 @@ class CalendarList extends Component {
     };
 
     componentDidMount() {
-        const {minDate, maxDate, firstDayOnWeeks} = this.props;
+        const {minDate, maxDate, firstDayOnWeeks, reversed} = this.props;
         this.setState({
-            dataSource: Constants.getCalendarDates(Constants.validateDate(minDate), Constants.validateDate(maxDate), firstDayOnWeeks),
+            dataSource: Constants.getCalendarDates(Constants.validateDate(minDate), Constants.validateDate(maxDate), firstDayOnWeeks, reversed),
         });
     }
 
@@ -468,6 +468,8 @@ CalendarList.propTypes = {
      * Arrow align. Default is 'left'. One of ['left', 'center', 'right']. Only when "horizontal={true}".
      */
     arrowAlign: PropTypes.string,
+    
+    reversed: PropTypes.bool,
 };
 
 CalendarList.defaultProps = {
@@ -497,6 +499,7 @@ CalendarList.defaultProps = {
     selectedDateMarkRangeColor: 'skyblue',
     beyondDatesDisabled: true,
     beyondDatesDisabledTextColor: '#b9b9b9',
+    reversed: false,
 };
 
 export default CalendarList;
