@@ -90,7 +90,7 @@ export function getWeekDays(weeks: [string], firstDay: number): [string] {
  * @param firstDay
  * @returns {[]} Return a date array consists of year, month and day such as [{year: 2019, month: 1, days: [1, 2, 3, ...]}, {year: 2019, month: 2, days: [1, 2, 3, ...]}, {year: 2020, month: 6, days: [1, 2, 3, ...]}]
  */
-export function getCalendarDates(startDate: string, endDate: string, firstDay: number) {
+export function getCalendarDates(startDate: string, endDate: string, firstDay: number, reversed: bool) {
     const startArr = startDate.replace(/\//g, '-').split('-');
     const endArr = endDate.replace(/\//g, '-').split('-');
     const startYear = +startArr[0];
@@ -108,6 +108,9 @@ export function getCalendarDates(startDate: string, endDate: string, firstDay: n
         } else {
             dates = dates.concat(constructCalendarDates(year, 1, 12, firstDay));
         }
+    }
+    if(reversed){
+        return dates.reverse()
     }
     return dates;
 }
